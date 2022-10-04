@@ -35,7 +35,9 @@ filenames = gsub(":.*","",filenames)
 L = list.files("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_tap_transcription.csv/tracking old tap transcription", ".csv")
 setwd("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_tap_transcription.csv/tracking old tap transcription")
 interleaving = function(x){
-  DF = read.csv(x, header = T) # load CSV
+  
+  DF = read.csv(x, header = F) %>%
+    filter(V1 != "Table 1") 
   names(DF)[c(1, 2)]= c("first_tap", "second_tap")
   
   idx = order(c(seq_along(DF$first_tap), seq_along(DF$second_tap)))
@@ -47,5 +49,7 @@ interleaving = function(x){
   write_csv(interleaved_sequence_df, x, col_names  = FALSE)
 }
 
-
+setwd("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_analysis/NNPP_analysis_preparation/tap tracking that are not interleaved")
+L = list.files(getwd(), ".csv")
 performance_calcuated = lapply(L, interleaving)
+
