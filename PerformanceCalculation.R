@@ -60,5 +60,5 @@ performance_calcuated = lapply(L, performance_calculation)
 merged_performance_calcuated =  do.call(rbind, performance_calcuated)
 merged_df = cbind(as.data.frame(L), merged_performance_calcuated)
 
-write.csv(merged_df,"/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/descriptive_survey_data_nnpp/PrivateSpeech_PerformanceCalculation/merged_performance_calcuated.csv", row.names = FALSE)
+write.csv(merged_df,"merged_performance_calcuated.csv", row.names = FALSE)
 
