@@ -24,4 +24,4 @@ O = lapply(L, get_count)
 merged_df =  do.call(rbind, O)
 merged_df = cbind(as.data.frame(L) ,merged_df)
 
-write.csv(merged_df,"/Users/guoxinqieve/Applications/OneDrive - UC San Diego/WinterSpring2022_NNPP_transcription/processed_everyone/wordUtteranceCountEveryone.csv", row.names = FALSE)
+write.csv(merged_df,"/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_merged_data/wordUtteranceCountEveryone.csv", row.names = FALSE)
