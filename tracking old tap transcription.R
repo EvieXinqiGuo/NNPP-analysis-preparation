@@ -1,7 +1,7 @@
 library(readr)
 library(tidyverse)
 setwd("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_tap_transcription")
-old_tap_tracking_raw = read_csv("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/previous tap tracking - tap_tracking.csv", col_names = FALSE)[, c(1, 2)] # 1 remove the useless column
+old_tap_tracking_raw = read_csv("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data", col_names = FALSE)[, c(1, 2)] # 1 remove the useless column
 
 # finding the index / location of cells that are associated with the cell that contains digits, which only happens to cells that has participants name and trial number
 index_cutoff = which(grepl("[0-9]", old_tap_tracking_raw$X1))
