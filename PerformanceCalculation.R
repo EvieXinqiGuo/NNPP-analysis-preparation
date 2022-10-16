@@ -49,16 +49,19 @@ performance_calculation = function(x){
   
   turn_assume_perfect = 24 - n_unluckyNoInfo_lucky
   actual_turn = nrow(table_clean)/2
-  performance = actual_turn - turn_assume_perfect
-  return(performance)
+  performance_difference = actual_turn - turn_assume_perfect
+  performance_ratio = actual_turn/turn_assume_perfect
+  turns_list = list("actual_turn" = actual_turn, "performance_difference" = performance_difference, "performance_ratio" = performance_ratio, "turn_assume_perfect" = turn_assume_perfect)
+  return(turns_list)
 }
 
 L = list.files("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_tap_transcription", ".csv")
 
 performance_calcuated = lapply(L, performance_calculation)
 
-merged_performance_calcuated =  do.call(rbind, performance_calcuated)
-merged_df = cbind(as.data.frame(L), merged_performance_calcuated)
+performance =  do.call(rbind, performance_calcuated)
+merged_df = data.frame(cbind(as.data.frame(L), performance))
+merged_df <- apply(merged_df,2,as.character)
 
-write.csv(merged_df,"/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_merged_data/merged_performance_calcuated.csv", row.names = FALSE)
+write.csv(merged_df,"/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_merged_data/performance.csv", row.names = FALSE)
 
