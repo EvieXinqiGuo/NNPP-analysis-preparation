@@ -7,8 +7,11 @@ L = list.files(getwd(), ".csv")
 # figuring which files do not start from "trial 3" or "trial 4"
 
 get_content = function(x) {
-  DF = read.csv(x, header = F, na.strings=c("","NA"), sep = ",")
-  start_index = which(DF[,1]=="Trial3") 
+  DF = read.csv(x, header = F, na.strings=c("","NA"), sep = ",") %>%
+    mutate_if(is.character, tolower) %>% 
+    mutate_if(is.character, gsub, pattern =" ", replace = "") %>% ## removing blank space
+  mutate_if(is.character, gsub, pattern ="recognization", replace = "recognition")# typo during categorization
+  start_index = which(DF[,1]=="trial3") 
   DF = DF[(start_index+1):nrow(DF),1:2]
   names(DF) = c("Trial3", "Trial4")
   trial3 = DF %>% count(Trial3) %>% mutate(trial = "3")
