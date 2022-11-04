@@ -1,4 +1,7 @@
 # load the dataset(s)
+
+# note to self: "Priscila Colino 1-Table 1.csv" was used to illustrate the point about lucky-match versus unlucky-no-info.
+
 getwd()
 setwd("/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_tap_transcription")
 
@@ -64,4 +67,3 @@ merged_df = data.frame(cbind(as.data.frame(L), performance))
 merged_df <- apply(merged_df,2,as.character)
 
 write.csv(merged_df,"/Users/guoxinqieve/Library/CloudStorage/OneDrive-UCSanDiego/Dissertation/NNPP (NO manipulation)/NNPP_data/NNPP_merged_data/performance.csv", row.names = FALSE)
-
